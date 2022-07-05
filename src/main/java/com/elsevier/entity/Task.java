@@ -14,15 +14,26 @@ public class Task {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+
 	@Column
 	private String title;
-	
+
 	@Column
 	private String description;
-	
+
 	@Column
 	private boolean flag;
+
+	public Task() {
+		super();
+	}
+
+	public Task(String title, String description, boolean flag) {
+		super();
+		this.title = title;
+		this.description = description;
+		this.flag = flag;
+	}
 
 	public String getTitle() {
 		return title;

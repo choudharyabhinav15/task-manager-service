@@ -7,6 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,8 +23,8 @@ public class TaskController {
   @GetMapping("/tasks")
   public ResponseEntity<List<Task>> findAllTasks() {
     List<Task> taskList = taskService.findAllTasks();
-    if (taskList != null && taskList.size() > 0) {
-      return new ResponseEntity<List<Task>>(taskService.findAllTasks(), HttpStatus.OK);
+    if (!CollectionUtils.isEmpty(taskList)) {
+      return new ResponseEntity<List<Task>>(taskList, HttpStatus.OK);
     }
     throw new GenericRestException("Tasks not found", HttpStatus.NOT_FOUND);
   }

@@ -1,13 +1,11 @@
 package com.elsevier.service;
 
-import java.util.List;
-
 import com.elsevier.entity.Task;
+import java.util.List;
 
 public interface TaskService {
 
-	List<Task> findAllTasks();
+  List<Task> findAllTasks();
 
-	Task save(Task task);
-
+  Task save(Task task);
 }

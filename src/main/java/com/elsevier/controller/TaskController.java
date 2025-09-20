@@ -31,9 +31,6 @@ public class TaskController {
 
   @PostMapping("/task")
   public ResponseEntity<Task> createTask(@RequestBody Task task) {
-    if (task != null) {
-      return new ResponseEntity<Task>(taskService.save(task), HttpStatus.CREATED);
-    }
-    throw new GenericRestException("Tasks not saved", HttpStatus.BAD_REQUEST);
+    return new ResponseEntity<Task>(taskService.createTask(task), HttpStatus.CREATED);
   }
 }

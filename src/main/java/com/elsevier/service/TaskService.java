@@ -7,5 +7,5 @@ public interface TaskService {
 
   List<Task> findAllTasks();
 
-  Task save(Task task);
+  Task createTask(Task task);
 }

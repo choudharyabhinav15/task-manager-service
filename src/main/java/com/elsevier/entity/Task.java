@@ -1,5 +1,6 @@
 package com.elsevier.entity;
 
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,11 +16,14 @@ public class Task {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private long id;
 
-  @Column private String title;
+  @Column(nullable = false)
+  private String title;
 
-  @Column private String description;
+  @Column(nullable = false)
+  private String description;
 
-  @Column private boolean flag;
+  @Column(nullable = false)
+  private boolean flag;
 
   public Task() {
     super();
@@ -57,7 +61,17 @@ public class Task {
   }
 
   @Override
-  public String toString() {
-    return "Task [title=" + title + ", description=" + description + ", flag=" + flag + "]";
+  public boolean equals(Object o) {
+    if (o == null || getClass() != o.getClass()) return false;
+    Task task = (Task) o;
+    return id == task.id
+        && flag == task.flag
+        && Objects.equals(title, task.title)
+        && Objects.equals(description, task.description);
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, title, description, flag);
   }
 }

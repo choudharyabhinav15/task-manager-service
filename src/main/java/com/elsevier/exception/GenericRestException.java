@@ -10,9 +10,7 @@ public class GenericRestException extends RuntimeException {
 
   private HttpStatus httpStatus;
 
-  /**
-   * Creates a GenericRestException with no detail message, HTTP status, or body.
-   */
+  /** Creates a GenericRestException with no detail message, HTTP status, or body. */
   public GenericRestException() {
     super();
   }
@@ -38,11 +36,13 @@ public class GenericRestException extends RuntimeException {
   }
 
   /**
-   * Constructs a GenericRestException with an error message, an associated HTTP status, and an arbitrary body object.
+   * Constructs a GenericRestException with an error message, an associated HTTP status, and an
+   * arbitrary body object.
    *
    * @param errorMessage human-readable error message
    * @param httpStatusCode HTTP status to be returned for this exception
-   * @param body optional response body or additional error details (may be any object that will be serialized)
+   * @param body optional response body or additional error details (may be any object that will be
+   *     serialized)
    */
   public GenericRestException(String errorMessage, HttpStatus httpStatusCode, Object body) {
     this(errorMessage, httpStatusCode);
@@ -52,7 +52,8 @@ public class GenericRestException extends RuntimeException {
   /**
    * Returns the optional response body associated with this exception.
    *
-   * The body can contain additional error details or payload to be returned to a client and may be {@code null}.
+   * <p>The body can contain additional error details or payload to be returned to a client and may
+   * be {@code null}.
    *
    * @return the response body object, or {@code null} if none was provided
    */

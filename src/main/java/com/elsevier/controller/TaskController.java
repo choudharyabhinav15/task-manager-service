@@ -23,7 +23,7 @@ public class TaskController {
   /**
    * Retrieve all tasks.
    *
-   * Returns a 200 OK response with the list of Task entities when one or more tasks exist;
+   * <p>Returns a 200 OK response with the list of Task entities when one or more tasks exist;
    * throws a GenericRestException with 404 Not Found when no tasks are present.
    *
    * @return ResponseEntity containing the list of tasks with HTTP 200 status when non-empty

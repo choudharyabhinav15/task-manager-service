@@ -28,8 +28,8 @@ public class TaskServiceImpl implements TaskService {
   /**
    * Creates and persists a new Task.
    *
-   * Validates that the task's title and description are not blank; if validation passes,
-   * saves the task via the repository and returns the persisted entity.
+   * <p>Validates that the task's title and description are not blank; if validation passes, saves
+   * the task via the repository and returns the persisted entity.
    *
    * @param task the Task to create; its title and description must be non-blank
    * @return the persisted Task

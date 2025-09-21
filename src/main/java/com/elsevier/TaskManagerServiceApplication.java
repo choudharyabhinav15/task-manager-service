@@ -9,7 +9,7 @@ public class TaskManagerServiceApplication {
   /**
    * Application entry point — boots the Spring Boot TaskManagerService application.
    *
-   * The JVM entry method invoked to start the application; delegates to SpringApplication.run,
+   * <p>The JVM entry method invoked to start the application; delegates to SpringApplication.run,
    * forwarding any command-line arguments.
    *
    * @param args command-line arguments passed through to SpringApplication

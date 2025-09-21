@@ -28,7 +28,8 @@ public class Task {
   /**
    * Creates a new Task instance.
    *
-   * Required by JPA: a public no-argument constructor used by the persistence provider when instantiating entities.
+   * <p>Required by JPA: a public no-argument constructor used by the persistence provider when
+   * instantiating entities.
    */
   public Task() {
     super();
@@ -37,8 +38,8 @@ public class Task {
   /**
    * Constructs a Task with the specified title, description, and flag.
    *
-   * Title and description are expected to be non-null; the `id` is not set by this
-   * constructor and will be generated when the entity is persisted.
+   * <p>Title and description are expected to be non-null; the `id` is not set by this constructor
+   * and will be generated when the entity is persisted.
    *
    * @param title the task title (must be non-null for persistence)
    * @param description the task description (must be non-null for persistence)
@@ -63,9 +64,9 @@ public class Task {
   /**
    * Set the task's title.
    *
-   * <p>The title is required to be non-null at the database level (the mapped column is
-   * nullable = false). Passing null will set the field to null and may cause a constraint
-   * violation when the entity is persisted.</p>
+   * <p>The title is required to be non-null at the database level (the mapped column is nullable =
+   * false). Passing null will set the field to null and may cause a constraint violation when the
+   * entity is persisted.
    *
    * @param title the new title for the task; should not be null when the entity will be persisted
    */
@@ -85,7 +86,7 @@ public class Task {
   /**
    * Set the task's description.
    *
-   * This value is mapped to a non-nullable database column.
+   * <p>This value is mapped to a non-nullable database column.
    */
   public void setDescription(String description) {
     this.description = description;
@@ -112,11 +113,12 @@ public class Task {
   /**
    * Compares this Task to another object for equality.
    *
-   * The comparison returns true when the other object is a Task and has the same
-   * id, flag, title, and description.
+   * <p>The comparison returns true when the other object is a Task and has the same id, flag,
+   * title, and description.
    *
    * @param o the object to compare with
-   * @return true if the given object is a Task with equal id, flag, title, and description; false otherwise
+   * @return true if the given object is a Task with equal id, flag, title, and description; false
+   *     otherwise
    */
   @Override
   public boolean equals(Object o) {
@@ -131,8 +133,8 @@ public class Task {
   /**
    * Computes a hash code for this Task.
    *
-   * The result is computed from the Task's id, title, description, and flag fields
-   * and is consistent with the {@link #equals(Object)} implementation.
+   * <p>The result is computed from the Task's id, title, description, and flag fields and is
+   * consistent with the {@link #equals(Object)} implementation.
    *
    * @return a hash code value for this Task
    */

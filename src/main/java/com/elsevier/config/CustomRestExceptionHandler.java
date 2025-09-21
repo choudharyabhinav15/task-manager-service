@@ -12,17 +12,16 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class CustomRestExceptionHandler {
 
   /**
-   * Handles a GenericRestException thrown by REST controllers and converts it into an HTTP response.
+   * Handles a GenericRestException thrown by REST controllers and converts it into an HTTP
+   * response.
    *
-   * The response body is a JSON object containing:
-   * - "timestamp": current date/time
-   * - "status": the HTTP status from the exception
-   * - "error": the exception message
-   * - "exception": the exception's simple class name
-   * - "errorDetails": the exception body, included only if present
+   * <p>The response body is a JSON object containing: - "timestamp": current date/time - "status":
+   * the HTTP status from the exception - "error": the exception message - "exception": the
+   * exception's simple class name - "errorDetails": the exception body, included only if present
    *
    * @param e the GenericRestException to convert into an HTTP response
-   * @return a ResponseEntity with status taken from the exception and a body containing the fields listed above
+   * @return a ResponseEntity with status taken from the exception and a body containing the fields
+   *     listed above
    */
   @ExceptionHandler
   public ResponseEntity<Object> handleException(GenericRestException e) {

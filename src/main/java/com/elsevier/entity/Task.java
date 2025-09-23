@@ -1,5 +1,6 @@
 package com.elsevier.entity;
 
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,57 +12,134 @@ import javax.persistence.Table;
 @Table(name = "task")
 public class Task {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private long id;
 
-	@Column
-	private String title;
+  @Column(nullable = false)
+  private String title;
 
-	@Column
-	private String description;
+  @Column(nullable = false)
+  private String description;
 
-	@Column
-	private boolean flag;
+  @Column(nullable = false)
+  private boolean flag;
 
-	public Task() {
-		super();
-	}
+  /**
+   * Creates a new Task instance.
+   *
+   * <p>Required by JPA: a public no-argument constructor used by the persistence provider when
+   * instantiating entities.
+   */
+  public Task() {
+    super();
+  }
 
-	public Task(String title, String description, boolean flag) {
-		super();
-		this.title = title;
-		this.description = description;
-		this.flag = flag;
-	}
+  /**
+   * Constructs a Task with the specified title, description, and flag.
+   *
+   * <p>Title and description are expected to be non-null; the `id` is not set by this constructor
+   * and will be generated when the entity is persisted.
+   *
+   * @param title the task title (must be non-null for persistence)
+   * @param description the task description (must be non-null for persistence)
+   * @param flag the task's boolean flag (e.g., completion or status indicator)
+   */
+  public Task(String title, String description, boolean flag) {
+    super();
+    this.title = title;
+    this.description = description;
+    this.flag = flag;
+  }
 
-	public String getTitle() {
-		return title;
-	}
+  /**
+   * Returns the task's title.
+   *
+   * @return the non-null title of the task
+   */
+  public String getTitle() {
+    return title;
+  }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+  /**
+   * Set the task's title.
+   *
+   * <p>The title is required to be non-null at the database level (the mapped column is nullable =
+   * false). Passing null will set the field to null and may cause a constraint violation when the
+   * entity is persisted.
+   *
+   * @param title the new title for the task; should not be null when the entity will be persisted
+   */
+  public void setTitle(String title) {
+    this.title = title;
+  }
 
-	public String getDescription() {
-		return description;
-	}
+  /**
+   * Returns the task's description.
+   *
+   * @return the description text
+   */
+  public String getDescription() {
+    return description;
+  }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+  /**
+   * Set the task's description.
+   *
+   * <p>This value is mapped to a non-nullable database column.
+   */
+  public void setDescription(String description) {
+    this.description = description;
+  }
 
-	public boolean isFlag() {
-		return flag;
-	}
+  /**
+   * Returns whether this task's flag is set.
+   *
+   * @return true if the task's flag is set; false otherwise
+   */
+  public boolean isFlag() {
+    return flag;
+  }
 
-	public void setFlag(boolean flag) {
-		this.flag = flag;
-	}
+  /**
+   * Sets the task's flag state.
+   *
+   * @param flag true to set the flag, false to clear it
+   */
+  public void setFlag(boolean flag) {
+    this.flag = flag;
+  }
 
-	@Override
-	public String toString() {
-		return "Task [title=" + title + ", description=" + description + ", flag=" + flag + "]";
-	}
+  /**
+   * Compares this Task to another object for equality.
+   *
+   * <p>The comparison returns true when the other object is a Task and has the same id, flag,
+   * title, and description.
+   *
+   * @param o the object to compare with
+   * @return true if the given object is a Task with equal id, flag, title, and description; false
+   *     otherwise
+   */
+  @Override
+  public boolean equals(Object o) {
+    if (o == null || getClass() != o.getClass()) return false;
+    Task task = (Task) o;
+    return id == task.id
+        && flag == task.flag
+        && Objects.equals(title, task.title)
+        && Objects.equals(description, task.description);
+  }
 
+  /**
+   * Computes a hash code for this Task.
+   *
+   * <p>The result is computed from the Task's id, title, description, and flag fields and is
+   * consistent with the {@link #equals(Object)} implementation.
+   *
+   * @return a hash code value for this Task
+   */
+  @Override
+  public int hashCode() {
+    return Objects.hash(id, title, description, flag);
+  }
 }

@@ -1,6 +1,8 @@
 ## task-manager-service
 task-manager-service
 
+[![Java CI with Maven](https://github.com/choudharyabhinav15/task-manager-service/actions/workflows/maven.yml/badge.svg)](https://github.com/choudharyabhinav15/task-manager-service/actions/workflows/maven.yml)
+
 ### How to Run
 Please follow the below instructions to run the application:
 
